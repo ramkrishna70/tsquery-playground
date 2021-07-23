@@ -18,10 +18,10 @@ jobs:
       - name: Install Angular
         run: npm install -g @angular/cli
       - name: Build
-        run: ng build --prod
+        run: ng build --prod --output-path docs
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
             GITHUB_TOKEN: ${{ secrets.BIT_RAM_PROFILE }}
-            BRANCH: doc
-            FOLDER: ./
+            BRANCH: github-pages
+            FOLDER: docs
