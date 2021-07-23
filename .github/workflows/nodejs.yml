@@ -25,4 +25,3 @@ jobs:
         with:
             GITHUB_TOKEN: ${{ secrets.BIT_RAM_PROFILE }}
             BRANCH: github-pages
-            FOLDER: docs
