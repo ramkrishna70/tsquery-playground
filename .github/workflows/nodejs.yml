@@ -1,4 +1,5 @@
-:
+name: workflow name
+on:
   push:
     branches:
       - 'master'
