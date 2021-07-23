@@ -19,7 +19,7 @@ jobs:
       - name: Install Angular
         run: npm install -g @angular/cli
       - name: Build
-        run: ng build --prod --output-path docs
+        run: ng build --prod
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
