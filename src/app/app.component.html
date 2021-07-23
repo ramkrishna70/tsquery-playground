@@ -1,0 +1,32 @@
+<div class="container">
+  <header>
+    <h2 class="mat-h2">TSQuery Playground</h2>
+    <div class="flex-spacer"></div>
+    <a mat-button href="https://github.com/urish/tsquery-playground" target="_blank" aria-label="GitHub Repository">
+      <img class="github-logo" src="assets/github-logo.svg" alt="GitHub" /> GitHub
+    </a>
+  </header>
+  <mat-form-field class="query-input">
+    <input matInput (input)="updateQuery($event.target.value)" [value]="query" placeholder="AST Query:" />
+    <mat-hint class="error-message" *ngIf="selectorError">{{selectorError}}</mat-hint>
+  </mat-form-field>
+  <div class="split-view">
+    <div class="mat-elevation-z3">
+      <h3 class="mat-h3">Code</h3>
+      <ngx-codemirror #codeEditor [(ngModel)]="sourceCode" [options]="codemirrorOptions" (focusChange)="runQuery()" (cursorActivity)="cursorMoved()">
+      </ngx-codemirror>
+    </div>
+    <div class="spacer"></div>
+    <div class="mat-elevation-z3">
+      <h3 class="mat-h3">AST</h3>
+      <div class="scrollable">
+        <app-ast-viewer [ast]="ast" [highlightNode]="activeNode" (nodeSelected)="activateNode($event)"></app-ast-viewer>
+      </div>
+    </div>
+  </div>
+  <p class="mat-typography status-bar">
+    <span>Total Matches: {{results.length}}</span>
+    <span class="flex-spacer"></span>
+    <span>&copy; 2018-2020 Uri Shaked</span>
+  </p>
+</div>
