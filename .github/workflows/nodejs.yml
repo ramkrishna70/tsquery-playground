@@ -21,6 +21,10 @@ jobs:
       run: |
         yarn
         yarn test
-        yarn build --prod
-      env:
-        CI: true
+        yarn build --prod 
+    - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+            GITHUB_TOKEN: ${{ secrets.BIT_RAM_PROFILE }}
+            BRANCH: doc
+            FOLDER: ./
